@@ -1,5 +1,13 @@
-import React from "react";
+import React from 'react';
 
-const App = () => <p>Hello World</p>;
+import GlobalStyle from './styles/global';
+import Routes from './routes';
+
+const App = () => (
+  <>
+    <Routes />
+    <GlobalStyle />
+  </>
+);
 
 export default App;
