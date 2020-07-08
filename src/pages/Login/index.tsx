@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const history = useHistory();
-  const { user, signIn } = useAuth();
+  const { user, signIn, loading } = useAuth();
 
   useEffect(() => {
     if (user) {
@@ -21,6 +21,12 @@ const Login: React.FC = () => {
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
     signIn(email, password);
+  }
+
+  if (loading) {
+    return null;
+    //TODO: Loading..
+    //TODO: useAuthorization
   }
 
   return (

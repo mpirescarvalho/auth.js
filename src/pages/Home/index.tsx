@@ -6,7 +6,7 @@ import useAuth from '../../contexts/auth';
 import { Container } from './styles';
 
 const Home: React.FC = () => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, loading } = useAuth();
   const history = useHistory();
 
   useEffect(() => {
@@ -17,6 +17,12 @@ const Home: React.FC = () => {
 
   function handleSignOut() {
     signOut();
+  }
+
+  if (loading) {
+    return null;
+    //TODO: Loading..
+    //TODO: useAuthorization
   }
 
   return (
