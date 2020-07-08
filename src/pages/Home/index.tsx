@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-// import { Container } from './styles';
+import useAuth from '../../contexts/auth';
+
+import { Container } from './styles';
 
 const Home: React.FC = () => {
-  return <h1>Home</h1>;
+  const { user, signOut } = useAuth();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!user) {
+      history.replace('/');
+    }
+  }, [user, history]);
+
+  function handleSignOut() {
+    signOut();
+  }
+
+  return (
+    <Container>
+      <button type="button" onClick={handleSignOut}>
+        SAIR
+      </button>
+    </Container>
+  );
 };
 
 export default Home;
