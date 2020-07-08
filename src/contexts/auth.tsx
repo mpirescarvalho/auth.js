@@ -4,7 +4,7 @@ import api from '../services/api';
 
 interface User {
   email: String;
-  senha: String;
+  password: String;
 }
 
 interface AuthContextData {
@@ -31,10 +31,23 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   async function signIn(email: String, password: String) {
-    const response = await api.post('/session', {
-      email,
-      password,
-    });
+    // const response = await api.post('/session', {
+    //   email,
+    //   password,
+    // });
+
+    new Promise((_) => setTimeout(() => {}, 2000));
+
+    const response = {
+      data: {
+        user: {
+          email,
+          password,
+        },
+        token: 'a8qj398fq9fh8qwefjausjfhjkasdfh24hfuhsdj',
+      },
+      status: 200,
+    };
 
     if (response.status === 200) {
       const { token, user } = response.data;
